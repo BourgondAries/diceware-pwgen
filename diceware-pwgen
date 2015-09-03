@@ -1,0 +1,14 @@
+#! /bin/bash
+for ((count=0; $count < $1; count+=1)); do
+	diearr=()
+	for ((die=0; $die < 5; die+=1)); do
+		number=0
+		while :; do
+			number=$(head -c 1 /dev/random | hexdump -e '"%u"')
+			[[ "$value" -gt 251 ]] || break
+		done
+		number=$(($number % 6 + 1))
+		diearr+=$number
+	done
+	awk "/$diearr/ { print; }" wordlist
+done
