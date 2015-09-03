@@ -1,5 +1,16 @@
 #! /bin/bash
-for ((count=0; $count < $1; count+=1)); do
+entropy=0
+length=0
+show_dice=0
+while getopts 'rl:e' opt; do
+	case $opt in
+		l) length=$OPTARG;;
+		r) show_dice=1;;
+		\?) echo 'Invalid' $OPTARG;;
+		:) echo "Option $OPTARG requires an argument.";;
+	esac
+done
+for ((count=0; $count < $length; count+=1)); do
 	diearr=()
 	for ((die=0; $die < 5; die+=1)); do
 		number=0
@@ -10,5 +21,9 @@ for ((count=0; $count < $1; count+=1)); do
 		number=$(($number % 6 + 1))
 		diearr+=$number
 	done
-	awk "/$diearr/ { print; }" wordlist
+	if [ $show_dice -eq 1 ]; then
+		awk -F'\t' "/$diearr/ { print; }" wordlist
+	else
+		awk -F'\t' "/$diearr/ { print "'$2'"; }" wordlist
+	fi
 done
