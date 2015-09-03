@@ -1,8 +1,8 @@
 # Diceware Password Generator #
 
 Roll virtual dice to determine a passphrase from a list.
-Invoke the generator using `diceware-pwgen 8`, where 8 can be replaced by any number.
-
+Invoke the generator using `diceware-pwgen -l 8`, where 8 can be replaced by any number.
+Another option is the -r flag. It shows the dice rolls.
 # How is it random? #
 
 The script uses /dev/random. This is a high quality random number generator. It collects
