@@ -2,7 +2,7 @@
 entropy=0
 length=0
 show_dice=0
-while getopts 'rl:e' opt; do
+while getopts 'rl:' opt; do
 	case $opt in
 		l) length=$OPTARG;;
 		r) show_dice=1;;
