@@ -6,8 +6,8 @@ while getopts 'rl:' opt; do
 	case $opt in
 		l) length=$OPTARG;;
 		r) show_dice=1;;
-		\?) echo 'Invalid' $OPTARG;;
-		:) echo "Option $OPTARG requires an argument.";;
+		\?) exit 1;;
+		:) echo "Option $OPTARG requires an argument."; exit 1;;
 	esac
 done
 for ((count=0; $count < $length; count+=1)); do
